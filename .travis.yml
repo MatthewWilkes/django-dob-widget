@@ -32,6 +32,4 @@ install:
   - pip install -q coveralls tox
 
 script:
-  - env | sort
   - tox -e $TOX_ENV
-
