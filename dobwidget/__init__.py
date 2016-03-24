@@ -9,6 +9,9 @@ class DateOfBirthWidget(widgets.MultiWidget):
     def __init__(self, attrs=None, order=None):
         if order is None:
             order = 'DMY'
+        order = tuple(order)
+        if sorted(order) != sorted('DMY'):
+            raise ValueError("You must provide an order string of either 'DMY', 'MDY' or 'YMD'")
         self.order = order
 
         child_attrs = {'type': 'number'}

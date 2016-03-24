@@ -1,10 +1,13 @@
 import datetime
 from unittest import TestCase
+import pytest
+from dobwidget import DateOfBirthWidget
 
 from ..models import Person
 from ..forms import PersonModelForm, DMYPersonModelForm, MDYPersonModelForm, YMDPersonModelForm
 
 
+@pytest.mark.django_db
 class SimpleTestCase(TestCase):
     
     def setUp(self):
@@ -49,6 +52,7 @@ class SimpleTestCase(TestCase):
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
     
 
+@pytest.mark.django_db
 class DMYTestCase(SimpleTestCase):
     
     def test_raw(self):
@@ -89,6 +93,7 @@ class DMYTestCase(SimpleTestCase):
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
 
 
+@pytest.mark.django_db
 class MDYTestCase(SimpleTestCase):
     
     def test_raw(self):
@@ -129,6 +134,7 @@ class MDYTestCase(SimpleTestCase):
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
 
 
+@pytest.mark.django_db
 class YMDTestCase(SimpleTestCase):
     
     def test_raw(self):
@@ -168,3 +174,22 @@ class YMDTestCase(SimpleTestCase):
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
     
+
+class BadOptionsTestCase(TestCase):
+    
+    def test_duplicate_order_elements_disallowed(self):
+        with pytest.raises(ValueError):
+            DateOfBirthWidget(order='YYMD')
+            DateOfBirthWidget(order='YYD')
+
+    def test_invalid_options_disallowed(self):
+        with pytest.raises(ValueError):
+            DateOfBirthWidget(order='YMZ')
+
+    def test_lowercase_disallowed(self):
+        with pytest.raises(ValueError):
+            DateOfBirthWidget(order='Ymd')
+
+    def test_partial_options_disallowed(self):
+        with pytest.raises(ValueError):
+            DateOfBirthWidget(order='YM')
