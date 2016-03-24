@@ -12,9 +12,10 @@ setup(
     author_email="django-oscar-worldpay@matthewwilkes.name",
     description=(
         "A Django date widget optimised for usability in entering dates of birth"),
-    long_description=open('README.md').read(),
+    long_description_markdown_filename='README.md',
     keywords="django, widget, date",
     license=open('LICENSE').read(),
+    setup_requires=['setuptools-markdown'],
     platforms=['linux'],
     packages=find_packages(exclude=['tests*']),
     include_package_data=True,
