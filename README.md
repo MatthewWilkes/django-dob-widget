@@ -1,5 +1,8 @@
 # django-dob-widget
 
+[![Build Status](https://travis-ci.org/MatthewWilkes/django-dob-widget.svg?branch=master)](https://travis-ci.org/MatthewWilkes/django-dob-widget)
+
+
 A Django date widget optimised for usability in entering dates of birth.
 
 This is based on the guidelines put forward by the UK Government Digital Service at https://designnotes.blog.gov.uk/2013/12/05/asking-for-a-date-of-birth/
