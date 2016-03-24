@@ -9,9 +9,10 @@ class PersonModelForm(forms.ModelForm):
     """
     Model form for people.
     """
-
+    
     class Meta(object):
         model = Person
+        fields = ['name', 'date_of_birth']
         widgets = {
             'date_of_birth': DateOfBirthWidget(),
         }
@@ -21,9 +22,10 @@ class DMYPersonModelForm(forms.ModelForm):
     """
     Model form for people in DMY areas.
     """
-
+    
     class Meta(object):
         model = Person
+        fields = ['name', 'date_of_birth']
         widgets = {
             'date_of_birth': DateOfBirthWidget(order='DMY'),
         }
@@ -31,23 +33,26 @@ class DMYPersonModelForm(forms.ModelForm):
 
 class MDYPersonModelForm(forms.ModelForm):
     """
-    Model form for people in DMY areas.
+    Model form for people in MDY areas.
     """
-
+    
     class Meta(object):
         model = Person
+        fields = ['name', 'date_of_birth']
         widgets = {
             'date_of_birth': DateOfBirthWidget(order='MDY'),
         }
     
+
 class YMDPersonModelForm(forms.ModelForm):
     """
-    Model form for people in DMY areas.
+    Model form for people in YMD areas.
     """
-
+    
     class Meta(object):
         model = Person
+        fields = ['name', 'date_of_birth']
         widgets = {
             'date_of_birth': DateOfBirthWidget(order='YMD'),
         }
-
+    
