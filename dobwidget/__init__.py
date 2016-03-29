@@ -18,11 +18,11 @@ class DateOfBirthWidget(widgets.MultiWidget):
         if attrs:
             child_attrs.update(attrs)
 
-        day_attrs = {'placeholder': 'DD'}
+        day_attrs = {'placeholder': 'DD', 'min': 1, 'max': 31}
         day_attrs.update(child_attrs)
-        month_attrs = {'placeholder': 'MM'}
+        month_attrs = {'placeholder': 'MM', 'min': 1, 'max': 12}
         month_attrs.update(child_attrs)
-        year_attrs = {'placeholder': 'YYYY'}
+        year_attrs = {'placeholder': 'YYYY', 'min': 1, 'max': 9999}
         year_attrs.update(child_attrs)
         
         subwidgets = {

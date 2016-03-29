@@ -19,9 +19,9 @@ class SimpleTestCase(TestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
         )
 
     def test_instance(self):
@@ -29,9 +29,9 @@ class SimpleTestCase(TestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" value="4" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="4" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
         )
 
     def test_POST(self):
@@ -44,9 +44,9 @@ class SimpleTestCase(TestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" value="3" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="3" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
@@ -60,9 +60,9 @@ class DMYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
         )
 
     def test_instance(self):
@@ -70,9 +70,9 @@ class DMYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" value="4" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="4" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
         )
 
     def test_POST(self):
@@ -85,9 +85,9 @@ class DMYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="DD" type="number" value="3" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="3" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
@@ -101,9 +101,9 @@ class MDYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="12" min="1" name="date_of_birth_0" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_1" max="31" min="1" name="date_of_birth_1" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
         )
 
     def test_instance(self):
@@ -111,9 +111,9 @@ class MDYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="MM" type="number" value="4" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="DD" type="number" value="4" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
+            u'<input id="id_date_of_birth_0" max="12" min="1" name="date_of_birth_0" placeholder="MM" type="number" value="4" />'
+            u'<input id="id_date_of_birth_1" max="31" min="1" name="date_of_birth_1" placeholder="DD" type="number" value="4" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2000" />'
         )
 
     def test_POST(self):
@@ -126,9 +126,9 @@ class MDYTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="MM" type="number" value="5" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="DD" type="number" value="3" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
+            u'<input id="id_date_of_birth_0" max="12" min="1" name="date_of_birth_0" placeholder="MM" type="number" value="5" />'
+            u'<input id="id_date_of_birth_1" max="31" min="1" name="date_of_birth_1" placeholder="DD" type="number" value="3" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
@@ -142,9 +142,9 @@ class YMDTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="YYYY" type="number" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_0" max="9999" min="1" name="date_of_birth_0" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="31" min="1" name="date_of_birth_2" placeholder="DD" type="number" />'
         )
 
     def test_instance(self):
@@ -152,9 +152,9 @@ class YMDTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="YYYY" type="number" value="2000" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="DD" type="number" value="4" />'
+            u'<input id="id_date_of_birth_0" max="9999" min="1" name="date_of_birth_0" placeholder="YYYY" type="number" value="2000" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="4" />'
+            u'<input id="id_date_of_birth_2" max="31" min="1" name="date_of_birth_2" placeholder="DD" type="number" value="4" />'
         )
 
     def test_POST(self):
@@ -167,9 +167,9 @@ class YMDTestCase(SimpleTestCase):
         field = form['date_of_birth']
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" name="date_of_birth_0" placeholder="YYYY" type="number" value="2001" />'
-            u'<input id="id_date_of_birth_1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
-            u'<input id="id_date_of_birth_2" name="date_of_birth_2" placeholder="DD" type="number" value="3" />'
+            u'<input id="id_date_of_birth_0" max="9999" min="1" name="date_of_birth_0" placeholder="YYYY" type="number" value="2001" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="5" />'
+            u'<input id="id_date_of_birth_2" max="31" min="1" name="date_of_birth_2" placeholder="DD" type="number" value="3" />'
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data['date_of_birth'], datetime.date(year=2001, month=5, day=3))
