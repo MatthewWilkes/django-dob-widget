@@ -59,8 +59,8 @@ class DateOfBirthWidget(widgets.MultiWidget):
         try:
             for key, widget in matched_widgets:
                 value = widget.value_from_datadict(data, files, '{0}_{1}'.format(name, index))
-                values[key] = value
+                values[key] = int(value)
                 index += 1
             return date(values['Y'], values['M'], values['D'])
-        except:
+        except (ValueError, TypeError):
             return None

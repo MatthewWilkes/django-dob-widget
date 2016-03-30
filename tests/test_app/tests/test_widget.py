@@ -37,9 +37,9 @@ class SimpleTestCase(TestCase):
     def test_POST(self):
         form = PersonModelForm({
             'name': 'Example',
-            'date_of_birth_0': 3,
-            'date_of_birth_1': 5,
-            'date_of_birth_2': 2001,
+            'date_of_birth_0': '3',
+            'date_of_birth_1': '5',
+            'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
         self.assertEqual(
@@ -78,9 +78,9 @@ class DMYTestCase(SimpleTestCase):
     def test_POST(self):
         form = DMYPersonModelForm({
             'name': 'Example',
-            'date_of_birth_0': 3,
-            'date_of_birth_1': 5,
-            'date_of_birth_2': 2001,
+            'date_of_birth_0': '3',
+            'date_of_birth_1': '5',
+            'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
         self.assertEqual(
@@ -119,9 +119,9 @@ class MDYTestCase(SimpleTestCase):
     def test_POST(self):
         form = MDYPersonModelForm({
             'name': 'Example',
-            'date_of_birth_0': 5,
-            'date_of_birth_1': 3,
-            'date_of_birth_2': 2001,
+            'date_of_birth_0': '5',
+            'date_of_birth_1': '3',
+            'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
         self.assertEqual(
@@ -160,9 +160,9 @@ class YMDTestCase(SimpleTestCase):
     def test_POST(self):
         form = YMDPersonModelForm({
             'name': 'Example',
-            'date_of_birth_0': 2001,
-            'date_of_birth_1': 5,
-            'date_of_birth_2': 3,
+            'date_of_birth_0': '2001',
+            'date_of_birth_1': '5',
+            'date_of_birth_2': '3',
         })
         field = form['date_of_birth']
         self.assertEqual(
@@ -193,6 +193,54 @@ class BadOptionsTestCase(TestCase):
     def test_partial_options_disallowed(self):
         with pytest.raises(ValueError):
             DateOfBirthWidget(order='YM')
+
+
+class InvalidInputTestCase(TestCase):
+    
+    def test_single_invalid_input_is_equivalent_to_no_inputs(self):
+        form = PersonModelForm({
+            'name': 'Example',
+            'date_of_birth_0': 'a',
+            'date_of_birth_1': 'b',
+            'date_of_birth_2': '2001',
+        })
+        field = form['date_of_birth']
+        self.assertEqual(
+            field.as_widget(),
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+        )
+
+    def test_invalid_month_is_equivalent_to_no_inputs(self):
+        form = PersonModelForm({
+            'name': 'Example',
+            'date_of_birth_0': '1',
+            'date_of_birth_1': '14',
+            'date_of_birth_2': '2001',
+        })
+        field = form['date_of_birth']
+        self.assertEqual(
+            field.as_widget(),
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+        )
+
+    def test_invalid_date_is_equivalent_to_no_inputs(self):
+        form = PersonModelForm({
+            'name': 'Example',
+            'date_of_birth_0': '29',
+            'date_of_birth_1': '2',
+            'date_of_birth_2': '2001',
+        })
+        field = form['date_of_birth']
+        self.assertEqual(
+            field.as_widget(),
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+        )
 
 
 class AttributesTestCase(TestCase):
