@@ -38,9 +38,13 @@ The DateOfBirthWidget can take an optional order parameter, to make it useful in
 
 ## Changes
 
+### 1.1
+
+* Allow attrs of the individual subwidgets to be set using day_attrs, month_attrs and year_attrs.
+
 ### 1.0
 
-Initial release
+* Initial release
 
 ## Authors
 

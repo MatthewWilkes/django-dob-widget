@@ -6,7 +6,7 @@ VERSION = "1.0.0"
 
 class DateOfBirthWidget(widgets.MultiWidget):
     
-    def __init__(self, attrs=None, order=None):
+    def __init__(self, attrs=None, order=None, **kwargs):
         if order is None:
             order = 'DMY'
         order = tuple(order)
@@ -20,10 +20,16 @@ class DateOfBirthWidget(widgets.MultiWidget):
 
         day_attrs = {'placeholder': 'DD', 'min': 1, 'max': 31}
         day_attrs.update(child_attrs)
+        if 'day_attrs' in kwargs:
+            day_attrs.update(kwargs['day_attrs'])
         month_attrs = {'placeholder': 'MM', 'min': 1, 'max': 12}
         month_attrs.update(child_attrs)
+        if 'month_attrs' in kwargs:
+            month_attrs.update(kwargs['month_attrs'])
         year_attrs = {'placeholder': 'YYYY', 'min': 1, 'max': 9999}
         year_attrs.update(child_attrs)
+        if 'year_attrs' in kwargs:
+            year_attrs.update(kwargs['year_attrs'])
         
         subwidgets = {
             'D': widgets.TextInput(attrs=day_attrs),

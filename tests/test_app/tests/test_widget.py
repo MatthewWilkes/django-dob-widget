@@ -193,3 +193,20 @@ class BadOptionsTestCase(TestCase):
     def test_partial_options_disallowed(self):
         with pytest.raises(ValueError):
             DateOfBirthWidget(order='YM')
+
+
+class AttributesTestCase(TestCase):
+
+    def test_attrs_can_be_specified_per_field(self):
+        widget = DateOfBirthWidget(
+            attrs={'data-foo': 'bar'},
+            day_attrs={'data-type': 'day'},
+            month_attrs={'data-type': 'month'},
+            year_attrs={'data-type': 'year'},
+        )
+        self.assertEqual(
+            widget.render('date_of_birth', None),
+            u'<input data-foo="bar" data-type="day" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
+            u'<input data-foo="bar" data-type="month" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
+            u'<input data-foo="bar" data-type="year" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+        )
