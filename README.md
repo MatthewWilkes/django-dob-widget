@@ -38,6 +38,10 @@ The DateOfBirthWidget can take an optional order parameter, to make it useful in
 
 ## Changes
 
+### 1.1.2
+
+* Do not clear inputs if an invalid date is entered
+
 ### 1.1.1
 
 * Bug fix around character-based input
