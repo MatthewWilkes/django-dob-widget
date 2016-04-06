@@ -205,11 +205,13 @@ class InvalidInputTestCase(TestCase):
             'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
+        self.assertFalse(form.is_valid())
+        self.assertIn('date_of_birth', form.errors)
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="a" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="b" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
     def test_invalid_month_is_equivalent_to_no_inputs(self):
@@ -220,11 +222,13 @@ class InvalidInputTestCase(TestCase):
             'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
+        self.assertFalse(form.is_valid())
+        self.assertIn('date_of_birth', form.errors)
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="1" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="14" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
     def test_invalid_date_is_equivalent_to_no_inputs(self):
@@ -235,11 +239,13 @@ class InvalidInputTestCase(TestCase):
             'date_of_birth_2': '2001',
         })
         field = form['date_of_birth']
+        self.assertFalse(form.is_valid())
+        self.assertIn('date_of_birth', form.errors)
         self.assertEqual(
             field.as_widget(),
-            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" />'
-            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" />'
-            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" />'
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="29" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="2" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
 
