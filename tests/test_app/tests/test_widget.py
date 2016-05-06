@@ -197,7 +197,7 @@ class BadOptionsTestCase(TestCase):
 
 class InvalidInputTestCase(TestCase):
     
-    def test_single_invalid_input_is_equivalent_to_no_inputs(self):
+    def test_single_invalid_input_is_equivalent_to_raw_text_inputs_but_invalid(self):
         form = PersonModelForm({
             'name': 'Example',
             'date_of_birth_0': 'a',
@@ -214,7 +214,7 @@ class InvalidInputTestCase(TestCase):
             u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
-    def test_invalid_month_is_equivalent_to_no_inputs(self):
+    def test_invalid_month_is_equivalent_to_raw_text_inputs_but_invalid(self):
         form = PersonModelForm({
             'name': 'Example',
             'date_of_birth_0': '1',
@@ -231,7 +231,7 @@ class InvalidInputTestCase(TestCase):
             u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
-    def test_invalid_date_is_equivalent_to_no_inputs(self):
+    def test_invalid_date_is_equivalent_to_raw_text_inputs_but_invalid(self):
         form = PersonModelForm({
             'name': 'Example',
             'date_of_birth_0': '29',
@@ -248,7 +248,7 @@ class InvalidInputTestCase(TestCase):
             u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
-    def test_invalid_date_far_future_is_equivalent_to_no_inputs(self):
+    def test_invalid_date_far_future_is_equivalent_to_raw_text_inputs_but_invalid(self):
         form = PersonModelForm({
             'name': 'Example',
             'date_of_birth_0': '21',
