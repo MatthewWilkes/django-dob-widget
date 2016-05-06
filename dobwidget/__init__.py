@@ -62,5 +62,5 @@ class DateOfBirthWidget(widgets.MultiWidget):
                 values[key] = int(value)
                 index += 1
             return date(values['Y'], values['M'], values['D'])
-        except (ValueError, TypeError):
+        except (ValueError, TypeError, ArithmeticError):
             return super(DateOfBirthWidget, self).value_from_datadict(data, files, name)

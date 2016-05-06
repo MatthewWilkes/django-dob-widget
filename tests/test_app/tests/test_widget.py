@@ -248,6 +248,23 @@ class InvalidInputTestCase(TestCase):
             u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="2001" />'
         )
 
+    def test_invalid_date_far_future_is_equivalent_to_no_inputs(self):
+        form = PersonModelForm({
+            'name': 'Example',
+            'date_of_birth_0': '21',
+            'date_of_birth_1': '2',
+            'date_of_birth_2': '198000000000000',
+        })
+        field = form['date_of_birth']
+        self.assertFalse(form.is_valid())
+        self.assertIn('date_of_birth', form.errors)
+        self.assertEqual(
+            field.as_widget(),
+            u'<input id="id_date_of_birth_0" max="31" min="1" name="date_of_birth_0" placeholder="DD" type="number" value="21" />'
+            u'<input id="id_date_of_birth_1" max="12" min="1" name="date_of_birth_1" placeholder="MM" type="number" value="2" />'
+            u'<input id="id_date_of_birth_2" max="9999" min="1" name="date_of_birth_2" placeholder="YYYY" type="number" value="198000000000000" />'
+        )
+
 
 class AttributesTestCase(TestCase):
 
