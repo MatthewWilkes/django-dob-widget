@@ -1,7 +1,7 @@
 from datetime import date
 from django.forms import widgets
 
-VERSION = "1.1.3"
+VERSION = "1.2.0"
 
 
 class DateOfBirthWidget(widgets.MultiWidget):

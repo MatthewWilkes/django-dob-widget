@@ -9,7 +9,7 @@ setup(
     version=VERSION,
     url='https://github.com/matthewwilkes/django-dob-widget',
     author="Matthew Wilkes",
-    author_email="django-oscar-worldpay@matthewwilkes.name",
+    author_email="django-dobwidget@matthewwilkes.name",
     description=(
         "A Django date widget optimised for usability in entering dates of birth"),
     long_description_markdown_filename='README.md',
@@ -24,7 +24,7 @@ setup(
     ],
     # See http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
@@ -34,7 +34,8 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Topic :: Other/Nonlisted Topic'],
+        'Programming Language :: Python :: 3.5',
+        'Framework :: Django',
+        'Framework :: Django :: 1.10',
+        'Topic :: Software Development :: Widget Sets'],
 )

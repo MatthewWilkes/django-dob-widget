@@ -38,6 +38,10 @@ The DateOfBirthWidget can take an optional order parameter, to make it useful in
 
 ## Changes
 
+### 1.2.0
+
+* Add support for Django 1.10
+
 ### 1.1.3
 
 * Handle far future dates that raise OverflowError when given to datetime.date
@@ -58,7 +62,7 @@ The DateOfBirthWidget can take an optional order parameter, to make it useful in
 
 * Initial release
 
-## Authors
+## Contributors
 
 * "Matthew Wilkes" <matt@matthewwilkes.name>
-
+* "Martin Sanders" <martin@forwardpartners.com>
