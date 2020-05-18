@@ -16,7 +16,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="django, widget, date",
-    license=open('LICENSE').read(),
+    license="MIT",
     setup_requires=['setuptools-markdown'],
     platforms=['linux'],
     packages=find_packages(exclude=['tests*']),
