@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-from dobwidget import VERSION
-
 
 setup(
     name='django-dob-widget',
-    version=VERSION,
+    version="1.2.0",
     url='https://github.com/matthewwilkes/django-dob-widget',
     author="Matthew Wilkes",
     author_email="django-dobwidget@matthewwilkes.name",
